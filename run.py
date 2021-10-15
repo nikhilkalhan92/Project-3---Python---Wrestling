@@ -22,32 +22,39 @@ profit_data = profit.get_all_values()
 
 def get_sales_data():
     """
-    Get wrestling t shirt  input from the user.
+    Get sales figures input from the user.
     """
-    print("Please enter the figures of sold t-shirt items.")
-    print("Data could be up to 7 numbers, separated by commas.")
-    print("Example: 10,20,30,40,50,60,70,\n")
-  
-    data_str = input("Enter your data here: ")
-    
-    sales_data = data_str.split(",")
-    validate_data(sales_data)
+    while True:
+        print("Please enter sales data from the last market.")
+        print("Data should be seven numbers, separated by commas.")
+        print("Example: 10,20,30,40,50,60,70\n")
+
+        data_str = input("Enter your data here: ")
+
+        sales_data = data_str.split(",")
+
+        if validate_data(sales_data):
+            print("Data is valid!")
+            break
+
+   
 
 def validate_data(values):
-    """ raise value error if numbers entered are more then or less than 7 """
-    print(values)
-
+    """
+    raise error if not an integrer,
+    or if there aren't exactly 7 values.
+    """
     try:
         [int(value) for value in values]
         if len(values) != 7:
             raise ValueError(
-                f"please enter the 7 numbers required, you only provided {len(values)}"
-        )
+                f"Exactly 7 values required, you provided {len(values)}"
+            )
     except ValueError as e:
         print(f"Invalid data: {e}, please try again.\n")
+        return False
 
-    print(values)
+    return True
 
- 
 
-get_sales_data()
+data = get_sales_data()
