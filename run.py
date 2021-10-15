@@ -24,12 +24,27 @@ def get_sales_data():
     """
     Get wrestling t shirt  input from the user.
     """
-    print("Please enter the figures of sold items.")
-    print("Data should be six numbers, separated by commas.")
-    print("Example: 10,20,30,40,50,60\n")
+    print("Please enter the figures of sold t-shirt items.")
+    print("Data could be up to 7 numbers, separated by commas.")
+    print("Example: 10,20,30,40,50,60,70,\n")
   
     data_str = input("Enter your data here: ")
-    print(f"The data provided is {data_str}")
+    
+    sales_data = data_str.split(",")
+    validate_data(sales_data)
+
+def validate_data(values):
+    """ raise value error if numbers entered are more then 7 and its not in a list format """
+
+    try: 
+        if len(values) != 7:
+            raise ValueError(
+                f"please enter the 7 numbers required, you only provided {len(values)}"
+        )
+    except ValueError as e:
+        print(f"Invalid data: {e}, please try again.\n")
+
+    print(values)
 
  
 
