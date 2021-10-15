@@ -34,9 +34,11 @@ def get_sales_data():
     validate_data(sales_data)
 
 def validate_data(values):
-    """ raise value error if numbers entered are more then 7 and its not in a list format """
+    """ raise value error if numbers entered are more then or less than 7 """
+    print(values)
 
-    try: 
+    try:
+        [int(value) for value in values]
         if len(values) != 7:
             raise ValueError(
                 f"please enter the 7 numbers required, you only provided {len(values)}"
