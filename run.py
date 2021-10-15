@@ -20,30 +20,17 @@ sales_data = sales.get_all_values()
 stock_data = stock.get_all_values()
 profit_data = profit.get_all_values()
 
-def get_days_sales_data(date: str):
-    """method to get sales data for a specific day"""
-    headings = []
-    data = []
-    for i, row in enumerate(sales_data):
-        if i == 0: 
-            headings = row
-        else:
-            if row[0] == date:
-                data = row
-    for i, item in enumerate(headings):
-        if i > 0:
-            print(item, data[i])
+def get_sales_data():
+    """
+    Get wrestling t shirt  input from the user.
+    """
+    print("Please enter the figures of sold items.")
+    print("Data should be six numbers, separated by commas.")
+    print("Example: 10,20,30,40,50,60\n")
+  
+    data_str = input("Enter your data here: ")
+    print(f"The data provided is {data_str}")
 
+ 
 
-
-def main():
-    """this is the main executiable function"""
-    print("some instructions")  #write a series of print function to explain to the user what the application does
-   
-   
-    print("pick a date")
-    date = input("")
-    #do some form of data validation
-    get_days_sales_data(date)
-
-main()
+get_sales_data()
